@@ -1,0 +1,20 @@
+package router
+
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/kryast/Crud-6.git/handlers"
+)
+
+type Handlers struct {
+	Customer  *handlers.CustomerHandler
+	Product   *handlers.ProductHandler
+	Order     *handlers.OrderHandler
+	OrderItem *handlers.OrderItemHandler
+	Payment   *handlers.PaymentHandler
+}
+
+func SetupRouter(h Handlers) *gin.Engine {
+	r := gin.Default()
+
+	return r
+}
