@@ -7,6 +7,8 @@ import (
 
 type CustomerRepository interface {
 	Create(*models.Customer) error
+	FindAll() ([]models.Customer, error)
+	FindByID(id uint) (*models.Customer, error)
 }
 
 type customerRepo struct {
@@ -19,4 +21,18 @@ func NewCustomerRepository(db *gorm.DB) CustomerRepository {
 
 func (r *customerRepo) Create(c *models.Customer) error {
 	return r.db.Create(c).Error
+}
+
+func (r *customerRepo) FindAll() ([]models.Customer, error) {
+	var out []models.Customer
+	return out, r.db.Find(&out).Error
+}
+
+func (r *customerRepo) FindByID(id uint) (*models.Customer, error) {
+	var out models.Customer
+	err := r.db.First(&out, id).Error
+	if err != nil {
+		return nil, err
+	}
+	return &out, nil
 }
