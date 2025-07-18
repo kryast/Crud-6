@@ -16,5 +16,8 @@ type Handlers struct {
 func SetupRouter(h Handlers) *gin.Engine {
 	r := gin.Default()
 
+	// Customers
+	r.POST("/customers", h.Customer.Create)
+
 	return r
 }
