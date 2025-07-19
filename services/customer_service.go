@@ -10,6 +10,7 @@ type CustomerService interface {
 	FindAll() ([]models.Customer, error)
 	FindByID(id uint) (*models.Customer, error)
 	Update(*models.Customer) error
+	Delete(id uint) error
 }
 
 type customerService struct {
@@ -24,3 +25,4 @@ func (s *customerService) Create(c *models.Customer) error            { return s
 func (s *customerService) FindAll() ([]models.Customer, error)        { return s.repo.FindAll() }
 func (s *customerService) FindByID(id uint) (*models.Customer, error) { return s.repo.FindByID(id) }
 func (s *customerService) Update(c *models.Customer) error            { return s.repo.Update(c) }
+func (s *customerService) Delete(id uint) error                       { return s.repo.Delete(id) }

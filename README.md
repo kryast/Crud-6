@@ -20,3 +20,6 @@ curl -X PUT http://localhost:8080/customers/1 \
   "email": "ahmad.updated@example.com",
   "phone": "081234567899"
 }'
+
+DELETE
+curl -X DELETE http://localhost:8080/customers/1
