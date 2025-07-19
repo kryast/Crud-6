@@ -23,3 +23,15 @@ curl -X PUT http://localhost:8080/customers/1 \
 
 DELETE
 curl -X DELETE http://localhost:8080/customers/1
+
+
+Product
+
+POST
+curl -X POST http://localhost:8080/products \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Monitor LED 24 Inch",
+  "category": "Elektronik",
+  "price": 1500000
+}'
