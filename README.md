@@ -49,3 +49,6 @@ curl -X PUT http://localhost:8080/products/1 \
   "category": "Elektronik",
   "price": 1800000
 }'
+
+DELETE
+curl -X DELETE http://localhost:8080/products/1
