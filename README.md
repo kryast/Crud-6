@@ -63,3 +63,8 @@ curl -X POST http://localhost:8080/orders \
   "customer_id": 1,
   "status": "pending"
 }'
+
+GET
+curl http://localhost:8080/orders
+
+curl http://localhost:8080/orders/1
