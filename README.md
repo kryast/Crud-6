@@ -35,3 +35,8 @@ curl -X POST http://localhost:8080/products \
   "category": "Elektronik",
   "price": 1500000
 }'
+
+GET
+curl http://localhost:8080/products
+
+curl http://localhost:8080/products/1
