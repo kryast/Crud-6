@@ -40,3 +40,12 @@ GET
 curl http://localhost:8080/products
 
 curl http://localhost:8080/products/1
+
+PUT
+curl -X PUT http://localhost:8080/products/1 \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Monitor LED 27 Inch",
+  "category": "Elektronik",
+  "price": 1800000
+}'
