@@ -52,3 +52,14 @@ curl -X PUT http://localhost:8080/products/1 \
 
 DELETE
 curl -X DELETE http://localhost:8080/products/1
+
+
+Order
+
+POST
+curl -X POST http://localhost:8080/orders \
+-H "Content-Type: application/json" \
+-d '{
+  "customer_id": 1,
+  "status": "pending"
+}'

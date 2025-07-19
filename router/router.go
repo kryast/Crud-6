@@ -30,5 +30,8 @@ func SetupRouter(h Handlers) *gin.Engine {
 	r.PUT("/products/:id", h.Product.Update)
 	r.DELETE("/products/:id", h.Product.Delete)
 
+	// Orders
+	r.POST("/orders", h.Order.Create)
+
 	return r
 }
