@@ -76,3 +76,6 @@ curl -X PUT http://localhost:8080/orders/1 \
   "customer_id": 1,
   "status": "paid"
 }'
+
+DELETE
+curl -X DELETE http://localhost:8080/orders/1

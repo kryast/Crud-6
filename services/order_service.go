@@ -10,6 +10,7 @@ type OrderService interface {
 	FindAll() ([]models.Order, error)
 	FindByID(id uint) (*models.Order, error)
 	Update(*models.Order) error
+	Delete(id uint) error
 }
 
 type orderService struct{ repo repositories.OrderRepository }
@@ -22,3 +23,4 @@ func (s *orderService) Create(o *models.Order) error            { return s.repo.
 func (s *orderService) FindAll() ([]models.Order, error)        { return s.repo.FindAll() }
 func (s *orderService) FindByID(id uint) (*models.Order, error) { return s.repo.FindByID(id) }
 func (s *orderService) Update(o *models.Order) error            { return s.repo.Update(o) }
+func (s *orderService) Delete(id uint) error                    { return s.repo.Delete(id) }
