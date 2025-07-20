@@ -9,6 +9,7 @@ type OrderRepository interface {
 	Create(*models.Order) error
 	FindAll() ([]models.Order, error)
 	FindByID(id uint) (*models.Order, error)
+	Update(*models.Order) error
 }
 
 type orderRepo struct {
@@ -36,4 +37,8 @@ func (r *orderRepo) FindByID(id uint) (*models.Order, error) {
 		return nil, err
 	}
 	return &out, nil
+}
+
+func (r *orderRepo) Update(o *models.Order) error {
+	return r.db.Save(o).Error
 }

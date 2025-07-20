@@ -68,3 +68,11 @@ GET
 curl http://localhost:8080/orders
 
 curl http://localhost:8080/orders/1
+
+PUT
+curl -X PUT http://localhost:8080/orders/1 \
+-H "Content-Type: application/json" \
+-d '{
+  "customer_id": 1,
+  "status": "paid"
+}'
