@@ -91,3 +91,9 @@ curl -X POST http://localhost:8080/order-items \
   "product_id": 1,
   "quantity": 2
 }'
+
+
+GET
+curl http://localhost:8080/order-items
+
+curl http://localhost:8080/order-items/1

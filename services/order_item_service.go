@@ -7,6 +7,8 @@ import (
 
 type OrderItemService interface {
 	Create(*models.OrderItem) error
+	FindAll() ([]models.OrderItem, error)
+	FindByID(id uint) (*models.OrderItem, error)
 }
 
 type orderItemService struct {
@@ -26,3 +28,7 @@ func (s *orderItemService) Create(it *models.OrderItem) error {
 	it.Subtotal = float64(it.Quantity) * p.Price
 	return s.repo.Create(it)
 }
+
+func (s *orderItemService) FindAll() ([]models.OrderItem, error) { return s.repo.FindAll() }
+
+func (s *orderItemService) FindByID(id uint) (*models.OrderItem, error) { return s.repo.FindByID(id) }

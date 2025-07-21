@@ -39,6 +39,8 @@ func SetupRouter(h Handlers) *gin.Engine {
 
 	// Order Items
 	r.POST("/order-items", h.OrderItem.Create)
+	r.GET("/order-items", h.OrderItem.GetAll)
+	r.GET("/order-items/:id", h.OrderItem.GetByID)
 
 	return r
 }
