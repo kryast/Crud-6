@@ -107,3 +107,6 @@ curl -X PUT http://localhost:8080/order-items/1 \
   "product_id": 1,
   "quantity": 3
 }'
+
+DELETE
+curl -X DELETE http://localhost:8080/order-items/1
