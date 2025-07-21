@@ -79,3 +79,15 @@ curl -X PUT http://localhost:8080/orders/1 \
 
 DELETE
 curl -X DELETE http://localhost:8080/orders/1
+
+
+Order Item
+
+POST
+curl -X POST http://localhost:8080/order-items \
+-H "Content-Type: application/json" \
+-d '{
+  "order_id": 1,
+  "product_id": 1,
+  "quantity": 2
+}'
