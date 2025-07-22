@@ -11,6 +11,7 @@ type OrderItemRepository interface {
 	FindByID(id uint) (*models.OrderItem, error)
 	Update(*models.OrderItem) error
 	Delete(id uint) error
+	SumSubtotalByOrderID(orderID uint) (float64, error)
 }
 
 type orderItemRepo struct {
@@ -46,4 +47,10 @@ func (r *orderItemRepo) Update(it *models.OrderItem) error {
 
 func (r *orderItemRepo) Delete(id uint) error {
 	return r.db.Delete(&models.OrderItem{}, id).Error
+}
+
+func (r *orderItemRepo) SumSubtotalByOrderID(orderID uint) (float64, error) {
+	var total float64
+	err := r.db.Model(&models.OrderItem{}).Where("order_id = ?", orderID).Select("COALESCE(SUM(subtotal),0)").Scan(&total).Error
+	return total, err
 }

@@ -1,8 +1,14 @@
 package services
 
-import "github.com/kryast/Crud-6.git/repositories"
+import (
+	"time"
+
+	"github.com/kryast/Crud-6.git/models"
+	"github.com/kryast/Crud-6.git/repositories"
+)
 
 type PaymentService interface {
+	Create(*models.Payment) error
 }
 
 type paymentService struct {
@@ -12,4 +18,17 @@ type paymentService struct {
 
 func NewPaymentService(pr repositories.PaymentRepository, oir repositories.OrderItemRepository) PaymentService {
 	return &paymentService{repo: pr, orderItemsRepo: oir}
+}
+
+func (s *paymentService) Create(p *models.Payment) error {
+	total, err := s.orderItemsRepo.SumSubtotalByOrderID(p.OrderID)
+	if err != nil {
+		return err
+	}
+	p.Amount = total
+	if p.Status == "paid" {
+		now := time.Now()
+		p.PaidAt = &now
+	}
+	return s.repo.Create(p)
 }

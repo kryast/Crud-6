@@ -110,3 +110,15 @@ curl -X PUT http://localhost:8080/order-items/1 \
 
 DELETE
 curl -X DELETE http://localhost:8080/order-items/1
+
+
+Payment
+
+POST
+curl -X POST http://localhost:8080/payments \
+-H "Content-Type: application/json" \
+-d '{
+  "order_id": 1,
+  "payment_method": "cash",
+  "status": "paid"
+}'
