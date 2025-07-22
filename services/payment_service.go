@@ -12,6 +12,7 @@ type PaymentService interface {
 	FindAll() ([]models.Payment, error)
 	FindByID(id uint) (*models.Payment, error)
 	Update(*models.Payment) error
+	Delete(id uint) error
 }
 
 type paymentService struct {
@@ -55,4 +56,8 @@ func (s *paymentService) Update(p *models.Payment) error {
 		p.PaidAt = &now
 	}
 	return s.repo.Update(p)
+}
+
+func (s *paymentService) Delete(id uint) error {
+	return s.repo.Delete(id)
 }

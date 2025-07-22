@@ -137,3 +137,7 @@ curl -X PUT http://localhost:8080/payments/1 \
   "payment_method": "credit_card",
   "status": "paid"
 }'
+
+
+DELETE
+curl -X DELETE http://localhost:8080/payments/1
