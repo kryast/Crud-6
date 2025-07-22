@@ -9,6 +9,8 @@ import (
 
 type PaymentService interface {
 	Create(*models.Payment) error
+	FindAll() ([]models.Payment, error)
+	FindByID(id uint) (*models.Payment, error)
 }
 
 type paymentService struct {
@@ -31,4 +33,12 @@ func (s *paymentService) Create(p *models.Payment) error {
 		p.PaidAt = &now
 	}
 	return s.repo.Create(p)
+}
+
+func (s *paymentService) FindAll() ([]models.Payment, error) {
+	return s.repo.FindAll()
+}
+
+func (s *paymentService) FindByID(id uint) (*models.Payment, error) {
+	return s.repo.FindByID(id)
 }

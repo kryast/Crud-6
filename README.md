@@ -122,3 +122,8 @@ curl -X POST http://localhost:8080/payments \
   "payment_method": "cash",
   "status": "paid"
 }'
+
+GET
+curl http://localhost:8080/payments
+
+curl http://localhost:8080/payments/1

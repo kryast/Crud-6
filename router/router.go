@@ -46,6 +46,8 @@ func SetupRouter(h Handlers) *gin.Engine {
 
 	// Payments
 	r.POST("/payments", h.Payment.Create)
+	r.GET("/payments", h.Payment.GetAll)
+	r.GET("/payments/:id", h.Payment.GetByID)
 
 	return r
 }
