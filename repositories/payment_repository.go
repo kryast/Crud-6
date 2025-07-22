@@ -9,6 +9,7 @@ type PaymentRepository interface {
 	Create(*models.Payment) error
 	FindAll() ([]models.Payment, error)
 	FindByID(id uint) (*models.Payment, error)
+	Update(*models.Payment) error
 }
 
 type paymentRepo struct {
@@ -36,4 +37,8 @@ func (r *paymentRepo) FindByID(id uint) (*models.Payment, error) {
 		return nil, err
 	}
 	return &out, nil
+}
+
+func (r *paymentRepo) Update(p *models.Payment) error {
+	return r.db.Save(p).Error
 }

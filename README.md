@@ -127,3 +127,13 @@ GET
 curl http://localhost:8080/payments
 
 curl http://localhost:8080/payments/1
+
+
+PUT
+curl -X PUT http://localhost:8080/payments/1 \
+-H "Content-Type: application/json" \
+-d '{
+  "order_id": 1,
+  "payment_method": "credit_card",
+  "status": "paid"
+}'

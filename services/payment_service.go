@@ -11,6 +11,7 @@ type PaymentService interface {
 	Create(*models.Payment) error
 	FindAll() ([]models.Payment, error)
 	FindByID(id uint) (*models.Payment, error)
+	Update(*models.Payment) error
 }
 
 type paymentService struct {
@@ -41,4 +42,17 @@ func (s *paymentService) FindAll() ([]models.Payment, error) {
 
 func (s *paymentService) FindByID(id uint) (*models.Payment, error) {
 	return s.repo.FindByID(id)
+}
+
+func (s *paymentService) Update(p *models.Payment) error {
+	total, err := s.orderItemsRepo.SumSubtotalByOrderID(p.OrderID)
+	if err != nil {
+		return err
+	}
+	p.Amount = total
+	if p.Status == "paid" && p.PaidAt == nil {
+		now := time.Now()
+		p.PaidAt = &now
+	}
+	return s.repo.Update(p)
 }
